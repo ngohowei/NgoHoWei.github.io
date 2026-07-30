@@ -1,6 +1,86 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
 
+/* Override modal behavior to show all content */
+html, body, #wrapper {
+	height: auto !important;
+}
+
+body.is-article-visible {
+	overflow: auto !important;
+}
+
+body.is-article-visible #header {
+	opacity: 1 !important;
+	transform: none !important;
+	filter: none !important;
+}
+
+body.is-article-visible #header > * {
+	opacity: 1 !important;
+}
+
+body.is-article-visible #header .content .inner {
+	max-height: none !important;
+	padding: 3rem 2rem !important;
+	opacity: 1 !important;
+}
+
+#wrapper {
+	display: flex !important;
+	flex-direction: column !important;
+	align-items: stretch !important;
+	height: auto !important;
+}
+
+#main {
+	display: block !important;
+	visibility: visible !important;
+	position: static !important;
+	width: 100% !important;
+	height: auto !important;
+	overflow: visible !important;
+	flex: 1;
+}
+
+#main article {
+	display: block !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+	position: relative !important;
+	padding: 4rem 2rem !important;
+	width: 100% !important;
+	height: auto !important;
+	transform: none !important;
+}
+
+#header {
+	position: relative !important;
+	height: auto !important;
+	width: 100% !important;
+	display: block !important;
+	padding: 3rem 2rem !important;
+	background: rgba(0, 0, 0, 0.5) !important;
+}
+
+#footer {
+	display: block !important;
+	visibility: visible !important;
+	position: relative !important;
+	width: 100% !important;
+	padding: 2rem !important;
+	background: rgba(0, 0, 0, 0.7) !important;
+}
+
+#bg {
+	position: fixed !important;
+	top: 0 !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	z-index: -1 !important;
+}
+
 /*
 	Dimension by HTML5 UP
 	html5up.net | @ajlkn
@@ -1140,9 +1220,12 @@ input, select, textarea {
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
 			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
-			background-size: auto, 256px 256px;
-			background-position: center, center;
-			background-repeat: no-repeat, repeat;
+			background-size: auto,
+ 256px 256px;
+			background-position: center,
+ center;
+			background-repeat: no-repeat,
+ repeat;
 			z-index: 2;
 		}
 
@@ -1288,9 +1371,9 @@ input, select, textarea {
 			}
 
 		#header .logo {
-			width: 5.5rem;
-			height: 5.5rem;
-			line-height: 5.5rem;
+			width: 3.5rem;
+			height: 3.5rem;
+			line-height: 3.5rem;
 			border: solid 1px #ffffff;
 			border-radius: 100%;
 		}
@@ -1656,3 +1739,195 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
+/* Custom portfolio styling */
+body {
+	background: linear-gradient(135deg, #07111f 0%, #0f172a 45%, #1e293b 100%);
+}
+
+#wrapper {
+	min-height: 100vh;
+	padding: 2rem 1rem 3rem;
+}
+
+#header {
+	max-width: 900px;
+	margin: 0 auto 2rem;
+	padding: 2rem 0 1rem;
+	text-align: left;
+}
+
+#header .logo {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 3.5rem;
+	height: 3.5rem;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+	margin-bottom: 1.25rem;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+#header .content {
+	margin-bottom: 1.5rem;
+}
+
+#header .inner {
+	max-width: 700px;
+}
+
+.eyebrow {
+	font-size: 0.8rem;
+	letter-spacing: 0.35rem;
+	text-transform: uppercase;
+	color: #8ec5ff;
+	margin-bottom: 0.7rem;
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.8rem;
+	margin-top: 1.5rem;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	background: transparent;
+	color: #ffffff;
+	font-weight: 600;
+	letter-spacing: 0.05rem;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+}
+
+.button.primary {
+	background: #4f8cff;
+	border-color: #4f8cff;
+}
+
+.button:hover {
+	background: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.35);
+}
+
+#main {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+#main > article {
+	background: rgba(255, 255, 255, 0.06);
+	backdrop-filter: blur(8px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 1rem;
+	padding: 2rem;
+	margin-bottom: 1.5rem;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.info-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+	margin: 1.25rem 0 1.5rem;
+}
+
+.info-card,
+.project-card {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 0.85rem;
+	padding: 1rem 1.1rem;
+}
+
+.project-list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.meta {
+	color: #8ec5ff;
+	font-size: 0.9rem;
+	margin-top: 0.8rem;
+}
+
+.skills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin-top: 0.75rem;
+}
+
+.skills li {
+	display: inline-block;
+	padding: 0.45rem 0.8rem;
+	border-radius: 999px;
+	background: rgba(79, 140, 255, 0.16);
+	border: 1px solid rgba(142, 197, 255, 0.25);
+	font-size: 0.9rem;
+}
+
+#contact form {
+	margin-bottom: 1.5rem;
+}
+
+.icons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.7rem;
+}
+
+.icons li {
+	margin: 0;
+}
+
+.icons a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.icons a:hover {
+	background: rgba(79, 140, 255, 0.2);
+}
+
+#footer {
+	text-align: center;
+	padding: 1rem 1rem 0;
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 736px) {
+	#wrapper {
+		padding: 1rem 0.8rem 2rem;
+	}
+
+	#header {
+		padding-top: 1rem;
+	}
+
+	#main > article {
+		padding: 1.25rem;
+	}
+
+	.info-grid,
+	.project-list {
+		grid-template-columns: 1fr;
+	}
+
+	.actions {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
