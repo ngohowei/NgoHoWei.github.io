@@ -1,0 +1,21 @@
+# Editors / IDEs
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.docstates
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs / env
+*.log
+email_debug.log
+.env
+
+# Dependencies / build output
+node_modules/
+dist/

@@ -1,350 +1,788 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	<title>Ho Wei | Full Stack Developer</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
-	</noscript>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Ngo Ho Wei — Full-Stack Developer</title>
+	<meta name="description"
+		content="Ngo Ho Wei (Ho Wei) is an Information Security graduate and full-stack web developer from Kuala Lumpur, Malaysia, working across .NET, Node.js and Laravel." />
+	<meta name="author" content="Ngo Ho Wei" />
+	<meta name="theme-color" content="#0b1120" />
+
+	<!-- Open Graph / social -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Ngo Ho Wei — Full-Stack Developer" />
+	<meta property="og:description"
+		content="Full-stack web developer from Kuala Lumpur, Malaysia. Projects across .NET, Node.js, React and Laravel." />
+	<meta property="og:url" content="https://ngohowei.github.io/NgoHoWei-Portfilio/" />
+	<meta name="twitter:card" content="summary" />
+
+	<link rel="canonical" href="https://ngohowei.github.io/NgoHoWei-Portfilio/" />
+	<link rel="icon"
+		href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1120'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,Helvetica,Arial,sans-serif' font-size='16' font-weight='700' fill='%2360a5fa' text-anchor='middle'%3EHW%3C/text%3E%3C/svg%3E" />
+
+	<style>
+		:root {
+			--bg: #0b1120;
+			--bg-soft: #0f172a;
+			--surface: rgba(255, 255, 255, 0.04);
+			--surface-hover: rgba(255, 255, 255, 0.07);
+			--border: rgba(255, 255, 255, 0.10);
+			--border-strong: rgba(255, 255, 255, 0.22);
+			--text: #e6edf6;
+			--text-muted: #97a6bb;
+			--accent: #60a5fa;
+			--accent-strong: #3b82f6;
+			--radius: 14px;
+			--maxw: 880px;
+			--font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			scroll-behavior: smooth;
+			scroll-padding-top: 84px;
+		}
+
+		body {
+			font-family: var(--font);
+			color: var(--text);
+			line-height: 1.65;
+			background:
+				radial-gradient(1100px 600px at 15% -10%, rgba(59, 130, 246, 0.16), transparent 60%),
+				radial-gradient(900px 500px at 100% 0%, rgba(96, 165, 250, 0.10), transparent 55%),
+				var(--bg);
+			background-attachment: fixed;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		a {
+			color: var(--accent);
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		:focus-visible {
+			outline: 2px solid var(--accent);
+			outline-offset: 3px;
+			border-radius: 4px;
+		}
+
+		.skip-link {
+			position: absolute;
+			left: -9999px;
+			top: 0;
+			background: var(--accent-strong);
+			color: #fff;
+			padding: 0.6rem 1rem;
+			border-radius: 0 0 8px 0;
+			z-index: 200;
+		}
+
+		.skip-link:focus {
+			left: 0;
+		}
+
+		.wrap {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 0 1.25rem;
+		}
+
+		/* ---------- Header / nav ---------- */
+		.site-header {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			backdrop-filter: blur(10px);
+			background: rgba(11, 17, 32, 0.72);
+			border-bottom: 1px solid var(--border);
+		}
+
+		.site-header .wrap {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+			min-height: 60px;
+		}
+
+		.brand {
+			font-weight: 700;
+			color: var(--text);
+			letter-spacing: 0.02em;
+		}
+
+		.brand:hover {
+			text-decoration: none;
+			color: var(--accent);
+		}
+
+		.nav {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.35rem 0.9rem;
+			justify-content: flex-end;
+		}
+
+		.nav a {
+			color: var(--text-muted);
+			font-size: 0.9rem;
+			padding: 0.3rem 0.2rem;
+		}
+
+		.nav a:hover {
+			color: var(--text);
+			text-decoration: none;
+		}
+
+		/* ---------- Buttons ---------- */
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.6rem 1.1rem;
+			border-radius: 999px;
+			border: 1px solid var(--border-strong);
+			background: var(--surface);
+			color: var(--text);
+			font-size: 0.9rem;
+			font-weight: 600;
+			transition: background 0.2s, border-color 0.2s, transform 0.2s;
+		}
+
+		.btn:hover {
+			background: var(--surface-hover);
+			border-color: var(--accent);
+			text-decoration: none;
+			transform: translateY(-1px);
+		}
+
+		.btn.primary {
+			background: var(--accent-strong);
+			border-color: var(--accent-strong);
+			color: #fff;
+		}
+
+		.btn.primary:hover {
+			background: #2f6fe0;
+		}
+
+		.btn.small {
+			padding: 0.4rem 0.85rem;
+			font-size: 0.82rem;
+			font-weight: 500;
+		}
+
+		/* ---------- Hero ---------- */
+		.hero {
+			padding: 4.5rem 0 3rem;
+		}
+
+		.hero .mark {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 3rem;
+			height: 3rem;
+			border-radius: 12px;
+			background: var(--surface);
+			border: 1px solid var(--border);
+			font-weight: 700;
+			color: var(--accent);
+			margin-bottom: 1.4rem;
+		}
+
+		.hero .eyebrow {
+			text-transform: uppercase;
+			letter-spacing: 0.28em;
+			font-size: 0.72rem;
+			color: var(--accent);
+			font-weight: 600;
+		}
+
+		.hero h1 {
+			font-size: clamp(2rem, 6vw, 3.1rem);
+			line-height: 1.1;
+			margin: 0.6rem 0 1rem;
+			letter-spacing: -0.02em;
+		}
+
+		.hero p.lead {
+			color: var(--text-muted);
+			font-size: 1.08rem;
+			max-width: 46rem;
+		}
+
+		.hero .actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+			margin-top: 1.9rem;
+		}
+
+		/* ---------- Sections ---------- */
+		section {
+			padding: 2.4rem 0;
+			border-top: 1px solid var(--border);
+		}
+
+		section h2 {
+			font-size: 1.5rem;
+			letter-spacing: -0.01em;
+			margin-bottom: 1.2rem;
+		}
+
+		section h2::before {
+			content: "";
+			display: inline-block;
+			width: 26px;
+			height: 3px;
+			border-radius: 3px;
+			background: var(--accent);
+			vertical-align: middle;
+			margin-right: 0.7rem;
+		}
+
+		.prose p+p {
+			margin-top: 0.9rem;
+		}
+
+		.prose {
+			color: var(--text-muted);
+			max-width: 46rem;
+		}
+
+		.prose strong {
+			color: var(--text);
+			font-weight: 600;
+		}
+
+		/* ---------- Skills ---------- */
+		.skill-groups {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 1rem;
+		}
+
+		.skill-group {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 1.1rem 1.2rem;
+		}
+
+		.skill-group h3 {
+			font-size: 0.82rem;
+			text-transform: uppercase;
+			letter-spacing: 0.12em;
+			color: var(--text-muted);
+			margin-bottom: 0.8rem;
+		}
+
+		.tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.45rem;
+			list-style: none;
+		}
+
+		.tags li {
+			font-size: 0.83rem;
+			padding: 0.32rem 0.7rem;
+			border-radius: 999px;
+			background: rgba(96, 165, 250, 0.12);
+			border: 1px solid rgba(96, 165, 250, 0.22);
+			color: #cfe0f6;
+		}
+
+		/* ---------- Projects ---------- */
+		.projects {
+			display: grid;
+			gap: 1.1rem;
+		}
+
+		.project {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 1.4rem 1.5rem;
+			transition: border-color 0.2s, background 0.2s;
+		}
+
+		.project:hover {
+			border-color: var(--border-strong);
+			background: var(--surface-hover);
+		}
+
+		.project-head {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: baseline;
+			justify-content: space-between;
+			gap: 0.4rem 1rem;
+		}
+
+		.project-head h3 {
+			font-size: 1.15rem;
+		}
+
+		.project-context {
+			font-size: 0.78rem;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: var(--text-muted);
+			white-space: nowrap;
+		}
+
+		.project p.desc {
+			color: var(--text-muted);
+			margin: 0.7rem 0 0.9rem;
+		}
+
+		.project .tags {
+			margin-bottom: 1rem;
+		}
+
+		.project-links {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.6rem;
+		}
+
+		/* ---------- Education ---------- */
+		.edu {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 1.3rem 1.5rem;
+		}
+
+		.edu h3 {
+			font-size: 1.1rem;
+		}
+
+		.edu .meta {
+			color: var(--text-muted);
+			font-size: 0.9rem;
+			margin: 0.25rem 0 0.7rem;
+		}
+
+		.edu p {
+			color: var(--text-muted);
+		}
+
+		/* ---------- Contact ---------- */
+		.contact-grid {
+			display: grid;
+			gap: 1.6rem;
+			grid-template-columns: 1fr;
+		}
+
+		@media (min-width: 720px) {
+			.contact-grid {
+				grid-template-columns: 0.8fr 1.2fr;
+			}
+		}
+
+		.contact-links {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 0.6rem;
+		}
+
+		.contact-links a {
+			color: var(--text);
+		}
+
+		.contact-links span {
+			display: block;
+			font-size: 0.78rem;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			color: var(--text-muted);
+		}
+
+		form .field {
+			margin-bottom: 0.9rem;
+		}
+
+		form .row {
+			display: grid;
+			gap: 0.9rem;
+		}
+
+		@media (min-width: 520px) {
+			form .row {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		label {
+			display: block;
+			font-size: 0.85rem;
+			margin-bottom: 0.35rem;
+			color: var(--text-muted);
+		}
+
+		input,
+		textarea {
+			width: 100%;
+			font: inherit;
+			color: var(--text);
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid var(--border-strong);
+			border-radius: 10px;
+			padding: 0.6rem 0.75rem;
+		}
+
+		input:focus,
+		textarea:focus {
+			outline: none;
+			border-color: var(--accent);
+			background: rgba(255, 255, 255, 0.08);
+		}
+
+		textarea {
+			resize: vertical;
+			min-height: 120px;
+		}
+
+		form .actions {
+			display: flex;
+			gap: 0.75rem;
+			margin-top: 0.4rem;
+		}
+
+		button[type="submit"] {
+			font: inherit;
+			cursor: pointer;
+		}
+
+		/* ---------- Footer ---------- */
+		.site-footer {
+			border-top: 1px solid var(--border);
+			padding: 2rem 0 2.6rem;
+			color: var(--text-muted);
+			font-size: 0.85rem;
+			text-align: center;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			html {
+				scroll-behavior: auto;
+			}
+
+			* {
+				transition: none !important;
+			}
+		}
+	</style>
 </head>
 
-<body class="is-preload">
+<body>
+	<a class="skip-link" href="#main">Skip to content</a>
 
-	<!-- Wrapper -->
-	<div id="wrapper">
+	<header class="site-header">
+		<div class="wrap">
+			<a class="brand" href="#top">Ho&nbsp;Wei</a>
+			<nav class="nav" aria-label="Primary">
+				<a href="#about">About</a>
+				<a href="#skills">Skills</a>
+				<a href="#projects">Projects</a>
+				<a href="#education">Education</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</div>
+	</header>
 
-		<!-- Header -->
-		<header id="header">
-			<div class="logo">
-				<span class="icon fa-briefcase"></span>
-			</div>
-			<div class="content">
-				<div class="inner">
-				<p class="eyebrow">Full Stack Developer</p>
-				<h1>Hi, I'm Ho Wei</h1>
-				<p>I build practical, scalable web applications with modern technologies. Passionate about creating clean code, responsive designs, and solving real-world problems with technology.</p>
+	<a id="top"></a>
+
+	<main id="main">
+		<section class="hero" style="border-top:0">
+			<div class="wrap">
+				<span class="mark">HW</span>
+				<p class="eyebrow">Full-Stack Developer</p>
+				<h1>Hi, I'm Ngo Ho Wei</h1>
+				<p class="lead">
+					Information Security graduate and full-stack web developer from Kuala Lumpur, Malaysia.
+					I build practical web applications across the .NET, Node.js and Laravel ecosystems,
+					with an eye for clean code, sensible data models, and secure defaults.
+				</p>
+				<div class="actions">
+					<a class="btn primary" href="#projects">View projects</a>
+					<a class="btn" href="#contact">Get in touch</a>
+					<a class="btn" href="https://github.com/ngohowei" target="_blank" rel="noopener">GitHub</a>
 				</div>
 			</div>
-		</header>
+		</section>
 
-	<!-- Main -->
-	<div id="main">
-		<!-- About -->
-		<article id="about">
-			<h2 class="major">About</h2>
-			<p>I'm a web developer from Malaysia with a Diploma in Information Technology. I specialize in building responsive websites and web applications with a focus on clean, maintainable code and excellent user experience.</p>
-			
-			<div class="info-grid">
-				<div class="info-card">
-					<h3>📧 Email</h3>
-					<p>ngohowei@gmail.com</p>
-				</div>
-				<div class="info-card">
-					<h3>📍 Location</h3>
-					<p>Kuala Lumpur, Malaysia</p>
-				</div>
-				<div class="info-card">
-					<h3>🎓 Education</h3>
-					<p>Bachelor in Information Technology (Honours) (Information Security)<br />Tunku Abdul Rahman University</p>
-				</div>
-				<div class="info-card">
-					<h3>💼 Work Focus</h3>
-					<p>Front-end & back-end development, responsive design, web applications</p>
+		<section id="about">
+			<div class="wrap">
+				<h2>About</h2>
+				<div class="prose">
+					<p>
+						I recently completed a <strong>Bachelor of Information Technology (Honours) in Information
+							Security</strong> at Tunku Abdul Rahman University of Management and Technology (TAR UMT).
+						My final-year project was an AI-driven adaptive phishing simulation and behavioural
+						analytics platform.
+					</p>
+					<p>
+						Across coursework, a technical assessment and an internship I've worked the full stack:
+						server-rendered ASP.NET Core and Laravel apps, React single-page frontends, REST APIs on
+						Node.js, relational and document databases, and serverless deployments on AWS. I'm most
+						interested in where secure software and practical product engineering meet.
+					</p>
 				</div>
 			</div>
+		</section>
 
-			<!-- Core Areas Section -->
-			<h3>Core Areas</h3>
-			<p>Full-Stack Web Development · Responsive Design · User Experience · Database Design · Cloud Deployment</p>
-		</article>
+		<section id="skills">
+			<div class="wrap">
+				<h2>Skills</h2>
+				<div class="skill-groups">
+					<div class="skill-group">
+						<h3>Languages</h3>
+						<ul class="tags">
+							<li>C#</li>
+							<li>JavaScript</li>
+							<li>PHP</li>
+							<li>Python</li>
+							<li>SQL</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h3>Frontend</h3>
+						<ul class="tags">
+							<li>React</li>
+							<li>HTML &amp; CSS</li>
+							<li>Bootstrap</li>
+							<li>Vite</li>
+							<li>Responsive design</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h3>Backend</h3>
+						<ul class="tags">
+							<li>ASP.NET Core MVC</li>
+							<li>Node.js &amp; Express</li>
+							<li>Laravel</li>
+							<li>REST APIs</li>
+							<li>JWT auth</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h3>Data</h3>
+						<ul class="tags">
+							<li>SQL Server</li>
+							<li>MySQL</li>
+							<li>MongoDB</li>
+							<li>DynamoDB</li>
+							<li>Entity Framework</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h3>Cloud &amp; Tools</h3>
+						<ul class="tags">
+							<li>AWS (Lambda, API Gateway, S3, CloudFront)</li>
+							<li>Docker</li>
+							<li>Git &amp; GitHub</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
 
-		<!-- Skills -->
-		<article id="skills">
-			<h2 class="major">Skills</h2>
-			
-			<h3>Programming Languages</h3>
-			<ul class="skills">
-				<li>JavaScript</li>
-				<li>Python</li>
-				<li>PHP</li>
-				<li>Java</li>
-			</ul>
+		<section id="projects">
+			<div class="wrap">
+				<h2>Projects</h2>
+				<div class="projects">
 
-			<h3>Frontend Development</h3>
-			<ul class="skills">
-				<li>HTML & CSS</li>
-				<li>React.js</li>
-				<li>Responsive Design</li>
-			</ul>
+					<article class="project">
+						<div class="project-head">
+							<h3>PhishDefence — Adaptive Phishing Simulation Platform</h3>
+							<span class="project-context">Final-year project · 2026</span>
+						</div>
+						<p class="desc">
+							An AI-driven phishing simulation engine that adapts each email's difficulty to a user's
+							measured susceptibility score, paired with an AWS-serverless behavioural analytics
+							dashboard. I built the adaptive simulation module: signal-detection-theory scoring,
+							dwell-time tracking, and a taxonomy-driven scenario generator backed by a Python AI
+							microservice, syncing behaviour logs to AWS for clustering and reporting.
+						</p>
+						<ul class="tags">
+							<li>C#</li>
+							<li>ASP.NET Core MVC</li>
+							<li>Python (Flask)</li>
+							<li>React</li>
+							<li>AWS Lambda</li>
+							<li>DynamoDB</li>
+							<li>API Gateway</li>
+						</ul>
+						<div class="project-links">
+							<a class="btn small" href="https://github.com/ngohowei/FYP-PhishDefence" target="_blank"
+								rel="noopener">Code</a>
+							<a class="btn small" href="https://d2j8th9vc8seiq.cloudfront.net" target="_blank"
+								rel="noopener">Live demo</a>
+						</div>
+					</article>
 
-			<h3>Backend Development</h3>
-			<ul class="skills">
-				<li>Node.js & Express</li>
-				<li>PHP & Laravel</li>
-				<li>MySQL & MongoDB</li>
-			</ul>
+					<article class="project">
+						<div class="project-head">
+							<h3>Field Dispatch &amp; Billing Hub</h3>
+							<span class="project-context">Internship project · 2026</span>
+						</div>
+						<p class="desc">
+							A full-stack app for managing on-site field engineering work. Customers raise service
+							tickets, engineers log their on-site work and parts, and admins assign jobs, review
+							reports and generate invoices. Role-based access with JWT auth, bcrypt-hashed passwords,
+							server-side scoping of every route, and SMS/email OTP password reset.
+						</p>
+						<ul class="tags">
+							<li>React</li>
+							<li>Vite</li>
+							<li>Node.js</li>
+							<li>Express</li>
+							<li>MongoDB</li>
+							<li>JWT</li>
+						</ul>
+						<div class="project-links">
+							<a class="btn small" href="https://github.com/ngohowei/InternProject" target="_blank"
+								rel="noopener">Code</a>
+						</div>
+					</article>
 
-			<h3>Cloud & Deployment</h3>
-			<ul class="skills">
-				<li>AWS</li>
-				<li>Firebase</li>
-				<li>GitHub & Git</li>
-			</ul>
+					<article class="project">
+						<div class="project-head">
+							<h3>Restaurant Ordering System</h3>
+							<span class="project-context">Coursework · 2025</span>
+						</div>
+						<p class="desc">
+							An online food-ordering web app with menu browsing, AJAX filtering, cart and checkout,
+							coupon codes, order tracking, payments and customer reviews. Server-rendered ASP.NET
+							Core MVC backed by SQL Server, with Entity Framework migrations and a set of security
+							hardening migrations for the user and auth tables.
+						</p>
+						<ul class="tags">
+							<li>ASP.NET Core</li>
+							<li>C#</li>
+							<li>SQL Server</li>
+							<li>Entity Framework</li>
+							<li>Bootstrap</li>
+							<li>JavaScript</li>
+						</ul>
+						<div class="project-links">
+							<a class="btn small" href="https://github.com/ngohowei/Y2S3WebAss" target="_blank"
+								rel="noopener">Code</a>
+						</div>
+					</article>
 
-			<h3>Tools & Libraries</h3>
-			<ul class="skills">
-				<li>Visual Studio Code</li>
-				<li>Postman</li>
-				<li>Bootstrap & Tailwind CSS</li>
-			</ul>
-		</article>
+					<article class="project">
+						<div class="project-head">
+							<h3>Laravel CMS — Technical Assessment</h3>
+							<span class="project-context">Assessment · 2026</span>
+						</div>
+						<p class="desc">
+							A Laravel content-management assessment delivered on a Dockerised PHP/MySQL stack:
+							Blade views, Eloquent models, migrations and seeders, and feature tests, with a
+							one-command Docker Compose setup.
+						</p>
+						<ul class="tags">
+							<li>Laravel</li>
+							<li>PHP</li>
+							<li>MySQL</li>
+							<li>Docker</li>
+							<li>Blade</li>
+							<li>PHPUnit</li>
+						</ul>
+						<div class="project-links">
+							<a class="btn small" href="https://github.com/ngohowei/laravel-cms-assessment" target="_blank"
+								rel="noopener">Code</a>
+						</div>
+					</article>
 
-		<!-- Projects -->
-		<article id="projects">
-			<h2 class="major">Stuff I Built</h2>
-			
-			<div class="project-list">
-				<div class="project-card">
-					<h3>Project 1: E-Commerce Store</h3>
-					<p>A fully functional online store with product catalog, shopping cart, and payment integration. Built with React and Node.js backend.</p>
-					
-					<h4>Key Features:</h4>
-					<ul>
-						<li>Product filtering and search</li>
-						<li>Secure checkout and payment</li>
-						<li>User authentication</li>
+				</div>
+			</div>
+		</section>
+
+		<section id="education">
+			<div class="wrap">
+				<h2>Education</h2>
+				<div class="edu">
+					<h3>Bachelor of Information Technology (Honours) in Information Security</h3>
+					<p class="meta">Tunku Abdul Rahman University of Management and Technology (TAR UMT) · Graduated 2026</p>
+					<p>
+						Final-year project: an AI-driven adaptive phishing simulation and behavioural analytics
+						platform, combining an ASP.NET Core simulation engine with an AWS-serverless analytics
+						pipeline and a React dashboard.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="contact">
+			<div class="wrap">
+				<h2>Get in touch</h2>
+				<div class="contact-grid">
+					<ul class="contact-links">
+						<li><span>Email</span><a href="mailto:ngohowei@gmail.com">ngohowei@gmail.com</a></li>
+						<li><span>GitHub</span><a href="https://github.com/ngohowei" target="_blank"
+								rel="noopener">github.com/ngohowei</a></li>
+						<li><span>Location</span>Kuala Lumpur, Malaysia</li>
 					</ul>
-					
-					<p class="meta">React · Node.js · MongoDB · Stripe</p>
-					<div class="project-links">
-						<a href="#" class="button small">View Details</a>
-						<a href="#" class="button small">GitHub</a>
-						<a href="#" class="button small">Live Demo</a>
-					</div>
-				</div>
 
-				<div class="project-card">
-					<h3>Project 2: Portfolio Website</h3>
-					<p>A personal portfolio website showcasing my projects and skills with a modern design and smooth navigation.</p>
-					
-					<h4>Key Features:</h4>
-					<ul>
-						<li>Responsive mobile design</li>
-						<li>Smooth scrolling navigation</li>
-						<li>Contact form with email</li>
-					</ul>
-					
-					<p class="meta">HTML · CSS · JavaScript · Responsive Design</p>
-					<div class="project-links">
-						<a href="#" class="button small">View Details</a>
-						<a href="#" class="button small">GitHub</a>
-						<a href="#" class="button small">Live Demo</a>
-					</div>
-				</div>
-
-				<div class="project-card">
-					<h3>Project 3: Task Management App</h3>
-					<p>A collaborative task management application for teams to organize projects and track progress in real-time.</p>
-					
-					<h4>Key Features:</h4>
-					<ul>
-						<li>Real-time task updates</li>
-						<li>Team collaboration</li>
-						<li>Progress tracking</li>
-					</ul>
-					
-					<p class="meta">React · Firebase · Material-UI</p>
-					<div class="project-links">
-						<a href="#" class="button small">View Details</a>
-						<a href="#" class="button small">GitHub</a>
-						<a href="#" class="button small">Live Demo</a>
-					</div>
+					<form action="https://formspree.io/f/manwqyqz" method="POST">
+						<div class="row">
+							<div class="field">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" required />
+							</div>
+							<div class="field">
+								<label for="email">Email</label>
+								<input type="email" name="email" id="email" required />
+							</div>
+						</div>
+						<div class="field">
+							<label for="subject">Subject</label>
+							<input type="text" name="subject" id="subject" required />
+						</div>
+						<div class="field">
+							<label for="message">Message</label>
+							<textarea name="message" id="message" required></textarea>
+						</div>
+						<div class="actions">
+							<button class="btn primary" type="submit">Send message</button>
+							<button class="btn" type="reset">Reset</button>
+						</div>
+					</form>
 				</div>
 			</div>
-		</article>
+		</section>
+	</main>
 
-		<!-- Experience -->
-		<article id="experience">
-			<h2 class="major">Experience</h2>
-			
-			<div class="experience-item">
-				<h3>Tech Solutions Company</h3>
-				<p class="role">Web Developer Intern</p>
-				<p class="year">2024 - Present</p>
-				<p>Developed and maintained web applications using React.js and Node.js. Collaborated with senior developers to implement new features and improve application performance. Gained hands-on experience in full-stack development and best practices.</p>
-				<a href="#" class="button small">Work</a>
-			</div>
-
-			<div class="experience-item">
-				<h3>Digital Agency</h3>
-				<p class="role">Frontend Developer</p>
-				<p class="year">2023</p>
-				<p>Designed and built responsive websites for various clients. Optimized web performance and ensured cross-browser compatibility. Implemented modern CSS frameworks and JavaScript libraries to enhance user experience.</p>
-				<a href="#" class="button small">Work</a>
-			</div>
-
-			<div class="experience-item">
-				<h3>Freelance Projects</h3>
-				<p class="role">Web Developer</p>
-				<p class="year">2022 - 2024</p>
-				<p>Built custom websites for small businesses. Managed projects from concept to deployment. Provided technical support and maintenance for client websites.</p>
-				<a href="#" class="button small">Work</a>
-			</div>
-		</article>
-
-		<!-- Awards & Achievements -->
-		<article id="achievements">
-			<h2 class="major">Awards & Achievements</h2>
-			
-			<div class="achievement-item">
-			<h3>Best Website Design Award</h3>
-			<p class="organization">Digital Excellence Conference</p>
-			<p class="year">2024</p>
-			<p>Recognized for innovative design and excellent user experience in web development competition.</p>
+	<footer class="site-footer">
+		<div class="wrap">
+			<p>© <span id="year">2026</span> Ngo Ho Wei · Kuala Lumpur, Malaysia · Built with plain HTML &amp; CSS</p>
 		</div>
-
-		<div class="achievement-item">
-			<h3>Hackathon Winner</h3>
-			<p class="organization">Tech Innovators Hackathon</p>
-			<p class="year">2023</p>
-			<p>Won first place with a web application that solved real-world logistics problem. Team project.</p>
-		</div>
-
-		<div class="achievement-item">
-			<h3>Top Developer of the Month</h3>
-			<p class="organization">Tech Solutions Company</p>
-			<p class="year">2024</p>
-			<p>Recognized for exceptional performance and contribution to company projects.</p>
-			</div>
-		</article>
-
-		<!-- Certifications -->
-		<article id="certifications">
-			<h2 class="major">Certifications</h2>
-			
-			<div class="certification-item">
-			<h4>Full Stack Web Development Diploma</h4>
-			<p>Diploma in Information Technology - Tunku Abdul Rahman University</p>
-		</div>
-
-		<div class="certification-item">
-			<h4>React.js Certification</h4>
-			<p>Udemy React Complete Course</p>
-		</div>
-
-		<div class="certification-item">
-			<h4>AWS Cloud Practitioner</h4>
-			<p>Amazon Web Services</p>
-			</div>
-		</article>
-
-		<!-- Contact -->
-		<article id="contact">
-			<h2 class="major">Get in Touch</h2>
-			<p>Have a project in mind or want to work together? Feel free to reach out! I'd love to hear about your ideas and discuss how I can help bring them to life.</p>
-			
-			<div class="contact-info">
-				<div class="contact-item">
-					<h4>📧 Email</h4>
-					<p><a href="mailto:ngohowei@gmail.com">ngohowei@gmail.com</a></p>
-				</div>
-				<div class="contact-item">
-					<h4>📱 Phone</h4>
-					<p><a href="tel:+60123456789">+60 123 456 789</a></p>
-				</div>
-				<div class="contact-item">
-					<h4>📍 Location</h4>
-					<p>Kuala Lumpur, Malaysia</p>
-				</div>
-			</div>
-
-			<h3>Connect With Me</h3>
-			<div class="social-links">
-				<a href="https://github.com/yourprofile" class="button small">GitHub</a>
-				<a href="https://linkedin.com/in/yourprofile" class="button small">LinkedIn</a>
-				<a href="https://twitter.com/yourprofile" class="button small">Twitter/X</a>
-				<a href="#" class="button small">Portfolio</a>
-			</div>
-
-			<form method="post" action="https://formspree.io/f/manwqyqz">
-				<div class="fields">
-					<div class="field half">
-						<label for="name">Name</label>
-						<input type="text" name="name" id="name" required />
-					</div>
-					<div class="field half">
-						<label for="email">Email</label>
-						<input type="email" name="email" id="email" required />
-					</div>
-					<div class="field">
-						<label for="subject">Subject</label>
-						<input type="text" name="subject" id="subject" required />
-					</div>
-					<div class="field">
-						<label for="message">Message</label>
-						<textarea name="message" id="message" rows="4" required></textarea>
-					</div>
-				</div>
-				<ul class="actions">
-					<li><input type="submit" value="Send Message" class="primary" /></li>
-					<li><input type="reset" value="Reset" /></li>
-				</ul>
-			</form>
-
-			<ul class="icons">
-				<li><a href="https://github.com/yourprofile" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-				<li><a href="https://linkedin.com/in/yourprofile" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-				<li><a href="https://twitter.com/yourprofile" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="mailto:ngohowei@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-			</ul>
-		</article>
-	</div>
-
-	<!-- Footer -->
-	<footer id="footer">
-		<p class="copyright">© 2026 Ho Wei · Kuala Lumpur, Malaysia</p>
 	</footer>
 
-	<!-- BG -->
-	<div id="bg"></div>
-
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	
-	<!-- Show all content sections by default -->
 	<script>
-		$(document).ready(function() {
-			// Show main content and all articles
-			$('#main').show().css({'display': 'block', 'visibility': 'visible'});
-			$('#main article').show().addClass('active').css({'display': 'block', 'visibility': 'visible', 'opacity': '1'});
-			$('body').removeClass('is-preload is-article-visible');
-			$('#header').show();
-			$('#footer').show();
-			$('#wrapper').css('height', 'auto');
-		});
-		
-		// Disable modal navigation
-		$(document).on('click', 'a[href*="#"]', function(e) {
-			if($(this).attr('href') !== '#') {
-				// Allow smooth scroll instead of modal behavior
-				var target = $(this).attr('href');
-				if($(target).length) {
-					e.preventDefault();
-					$('html, body').animate({
-						scrollTop: $(target).offset().top - 50
-					}, 800);
-				}
-			}
-		});
+		document.getElementById("year").textContent = new Date().getFullYear();
 	</script>
-
 </body>
 
 </html>
